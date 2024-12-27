@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "kwtpWgje0WE88Bl4I/fwYbtDbLc9XJLzB+XHOKYzJVQ=",
+  "Source": "ProniaAPI",
+  "BasePath": "_content/ProniaAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
