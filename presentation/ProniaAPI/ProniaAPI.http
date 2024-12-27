@@ -1,0 +1,6 @@
+@ProniaAPI_HostAddress = http://localhost:5168
+
+GET {{ProniaAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

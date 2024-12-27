@@ -1,0 +1,65 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35506.116 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2AA40442-B0E7-4AAF-8886-9FC645135077}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{6DF0B89C-A089-4928-9643-D0A9D7D36FCC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "presentation", "presentation", "{9D299695-CBCF-43C8-AE05-6457834E87E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E66DE5ED-D9C1-4865-9D51-390514FACB1D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastucture", "Infrastucture", "{4902ED88-D850-4BAC-B9C8-26365C10AAF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProniaOnion.Domain", "src\Core\ProniaOnion.Domain\ProniaOnion.Domain.csproj", "{0D0B0B7A-D312-4122-A500-270C3C2017EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProniaOnion.Application", "src\Core\ProniaOnion.Application\ProniaOnion.Application.csproj", "{CA973FDE-B14D-461D-87C2-6B5E994B5AD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProniaOnion.Persistence", "src\Infrastructure\ProniaOnion.Persistence\ProniaOnion.Persistence.csproj", "{EE78E02C-2920-41C3-B436-B5CE6D4FDF6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProniaOnion.Infrastructure", "src\Infrastructure\ProniaOnion.Infrastructure\ProniaOnion.Infrastructure.csproj", "{E8C43C9C-9B53-4C30-B7AE-C1648B44A0FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProniaAPI", "presentation\ProniaAPI\ProniaAPI.csproj", "{ECD9554D-593B-4D6F-9F39-5E336473DEF0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0D0B0B7A-D312-4122-A500-270C3C2017EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D0B0B7A-D312-4122-A500-270C3C2017EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D0B0B7A-D312-4122-A500-270C3C2017EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D0B0B7A-D312-4122-A500-270C3C2017EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA973FDE-B14D-461D-87C2-6B5E994B5AD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA973FDE-B14D-461D-87C2-6B5E994B5AD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA973FDE-B14D-461D-87C2-6B5E994B5AD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA973FDE-B14D-461D-87C2-6B5E994B5AD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE78E02C-2920-41C3-B436-B5CE6D4FDF6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE78E02C-2920-41C3-B436-B5CE6D4FDF6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE78E02C-2920-41C3-B436-B5CE6D4FDF6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE78E02C-2920-41C3-B436-B5CE6D4FDF6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8C43C9C-9B53-4C30-B7AE-C1648B44A0FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8C43C9C-9B53-4C30-B7AE-C1648B44A0FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8C43C9C-9B53-4C30-B7AE-C1648B44A0FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8C43C9C-9B53-4C30-B7AE-C1648B44A0FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECD9554D-593B-4D6F-9F39-5E336473DEF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECD9554D-593B-4D6F-9F39-5E336473DEF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECD9554D-593B-4D6F-9F39-5E336473DEF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECD9554D-593B-4D6F-9F39-5E336473DEF0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E66DE5ED-D9C1-4865-9D51-390514FACB1D} = {2AA40442-B0E7-4AAF-8886-9FC645135077}
+		{4902ED88-D850-4BAC-B9C8-26365C10AAF1} = {2AA40442-B0E7-4AAF-8886-9FC645135077}
+		{0D0B0B7A-D312-4122-A500-270C3C2017EB} = {E66DE5ED-D9C1-4865-9D51-390514FACB1D}
+		{CA973FDE-B14D-461D-87C2-6B5E994B5AD9} = {E66DE5ED-D9C1-4865-9D51-390514FACB1D}
+		{EE78E02C-2920-41C3-B436-B5CE6D4FDF6E} = {4902ED88-D850-4BAC-B9C8-26365C10AAF1}
+		{E8C43C9C-9B53-4C30-B7AE-C1648B44A0FC} = {4902ED88-D850-4BAC-B9C8-26365C10AAF1}
+		{ECD9554D-593B-4D6F-9F39-5E336473DEF0} = {9D299695-CBCF-43C8-AE05-6457834E87E8}
+	EndGlobalSection
+EndGlobal
