@@ -1,10 +1,11 @@
 ﻿
 
+using ProniaOnion.Domain.Entities;
 using System.Linq.Expressions;
 
 namespace ProniaOnion.Application.Abstractions.Repositories
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository<T> where T : BaseEntity, new() 
     {
         IQueryable<T> GetAll(
             Expression<Func<T, bool>>? expression = null,

@@ -152,3 +152,4 @@ C:\Users\user\Desktop\API\ProniaOnion\presentation\ProniaAPI\obj\Debug\net8.0\re
 C:\Users\user\Desktop\API\ProniaOnion\presentation\ProniaAPI\obj\Debug\net8.0\ProniaAPI.pdb
 C:\Users\user\Desktop\API\ProniaOnion\presentation\ProniaAPI\obj\Debug\net8.0\ProniaAPI.genruntimeconfig.cache
 C:\Users\user\Desktop\API\ProniaOnion\presentation\ProniaAPI\obj\Debug\net8.0\ref\ProniaAPI.dll
+C:\Users\user\Desktop\API\ProniaOnion\presentation\ProniaAPI\bin\Debug\net8.0\AutoMapper.dll
