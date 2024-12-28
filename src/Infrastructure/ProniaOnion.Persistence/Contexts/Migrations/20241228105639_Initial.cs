@@ -108,14 +108,7 @@ namespace ProniaOnion.Persistence.Contexts.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_ProductColors_ColorId",
                 table: "ProductColors",
-                column: "ColorId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ProductColors_ProductId",
-                table: "ProductColors",
-                column: "ProductId",
-                unique: true);
+                column: "ColorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",

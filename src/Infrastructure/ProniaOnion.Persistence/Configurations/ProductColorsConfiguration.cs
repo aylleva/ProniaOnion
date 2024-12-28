@@ -14,8 +14,7 @@ namespace ProniaOnion.Persistence.Configurations
         public void Configure(EntityTypeBuilder<ProductColors> builder)
         {
             builder.HasKey(x => new{ x.ProductId, x.ColorId });
-            builder.HasIndex(x => x.ColorId).IsUnique();
-            builder.HasIndex(x => x.ProductId).IsUnique();
+            
             
         }
     }

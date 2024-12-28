@@ -135,11 +135,7 @@ namespace ProniaOnion.Persistence.Contexts.Migrations
 
                     b.HasKey("ProductId", "ColorId");
 
-                    b.HasIndex("ColorId")
-                        .IsUnique();
-
-                    b.HasIndex("ProductId")
-                        .IsUnique();
+                    b.HasIndex("ColorId");
 
                     b.ToTable("ProductColors");
                 });

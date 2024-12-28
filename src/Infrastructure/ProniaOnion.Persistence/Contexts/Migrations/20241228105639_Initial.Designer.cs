@@ -12,7 +12,7 @@ using ProniaOnion.Persistence.Contexts;
 namespace ProniaOnion.Persistence.Contexts.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20241227192837_Initial")]
+    [Migration("20241228105639_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -138,11 +138,7 @@ namespace ProniaOnion.Persistence.Contexts.Migrations
 
                     b.HasKey("ProductId", "ColorId");
 
-                    b.HasIndex("ColorId")
-                        .IsUnique();
-
-                    b.HasIndex("ProductId")
-                        .IsUnique();
+                    b.HasIndex("ColorId");
 
                     b.ToTable("ProductColors");
                 });
