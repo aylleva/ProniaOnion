@@ -52,10 +52,10 @@ namespace ProniaOnion.Persistence.Implementations.Repositories.Generic
 
             if (includes is not null)
             {
-                query = getincludes(query, includes);
+                query=getincludes(query, includes);
             }
 
-            return await _table.FirstOrDefaultAsync(c => c.Id == id);
+            return await query.FirstOrDefaultAsync(c => c.Id == id);
         }
 
 
