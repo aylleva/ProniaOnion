@@ -24,6 +24,21 @@ namespace ProniaOnion.Persistence.ServiceRegistration
 
             services.AddScoped<ICategoryService,CategoryService>();
             services.AddScoped<IColorService, ColorService>();
+
+            services.AddScoped<ITagRepository,TagRepository>();
+            services.AddScoped<ITagService,TagService>();
+
+            services.AddScoped<ISizeRepository, SizeRepository>();
+            services.AddScoped<ISizeService, SizeService>();
+
+            services.AddScoped<IAuthorRepository, AuthorRepository>();
+            services.AddScoped<IAuthorService, AuthorService>();
+
+            services.AddScoped<IGenreRepository, GenreRepository>();
+            services.AddScoped<IGenreService, GenreService>();
+
+            services.AddScoped<IBlogRepository, BlogRepository>();
+            services.AddScoped<IBlogService, BlogService>();
             return services;
         }
     }

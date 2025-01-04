@@ -10,7 +10,7 @@ namespace ProniaOnion.Application.Abstractions.Services
 
         Task<GetColorDto> GetByIdAsync(int id);
 
-        Task CreateAsync(CreateColorDto colordto);
+        Task CreateAsync(CreateColorDto colordto); 
         Task UpdateAsync(int Id, UpdateColorDto colordto);
 
         Task DeleteAsync(int Id);

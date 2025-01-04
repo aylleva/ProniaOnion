@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProniaOnion.Application.Abstractions.Services;
 using ProniaOnion.Application.DTOs;
+using ProniaOnion.Application.FluentValidator;
 
 namespace ProniaAPI.Controllers
 {
@@ -10,6 +11,7 @@ namespace ProniaAPI.Controllers
     public class CategoriesController : ControllerBase
     {
         private readonly ICategoryService _service;
+     
 
         public CategoriesController(ICategoryService service)
         {
@@ -35,6 +37,7 @@ namespace ProniaAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromForm] CreateCategoryDto categorydto)
         {
+          
             await _service.CreateAsync(categorydto);
             return Created();
         }

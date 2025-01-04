@@ -13,9 +13,7 @@ namespace ProniaOnion.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<ProductColors> builder)
         {
-            builder.HasKey(x => new{ x.ProductId, x.ColorId });
-            
-            
+            builder.HasKey(x => new{ x.ProductId, x.ColorId }); 
         }
     }
 }
