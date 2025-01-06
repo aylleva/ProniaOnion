@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProniaOnion.Application.Abstractions.Services;
 using ProniaOnion.Application.DTOs;
@@ -11,12 +12,13 @@ namespace ProniaAPI.Controllers
     public class CategoriesController : ControllerBase
     {
         private readonly ICategoryService _service;
-     
+        private readonly IValidator<CreateCategoryDto> _validator;
 
-        public CategoriesController(ICategoryService service)
+        public CategoriesController(ICategoryService service,IValidator<CreateCategoryDto> validator)
         {
 
             _service = service;
+            _validator = validator;
         }
         [HttpGet]
         public async Task<IActionResult> Get(int page = 1, int take = 2)
@@ -37,7 +39,17 @@ namespace ProniaAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromForm] CreateCategoryDto categorydto)
         {
-          
+           var result=await _validator.ValidateAsync(categorydto);
+
+            if (!result.IsValid)
+            {
+                foreach(var error in result.Errors)
+                {
+                    ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                }
+                return BadRequest(ModelState);
+            }
+
             await _service.CreateAsync(categorydto);
             return Created();
         }

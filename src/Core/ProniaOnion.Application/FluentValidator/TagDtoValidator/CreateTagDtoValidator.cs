@@ -11,7 +11,7 @@ namespace ProniaOnion.Application.FluentValidator
         {
             RuleFor(t=>t.Name).NotEmpty().WithMessage("Name Required")
                 .MaximumLength(100).WithMessage("Must Contains Max 100 symbols")
-                .Matches(@"^[A-Za-z]*$");
+                .Matches(@"^[A-Za-z]*$").WithMessage("Wrong Format! Try Again!");
         }
     }
 }

@@ -10,7 +10,7 @@ namespace ProniaOnion.Application.FluentValidator.SizeDtoValidator
         {
             RuleFor(s=>s.Name).NotEmpty().WithMessage("Name Required")
                 .MaximumLength(50).WithMessage("Must Contains Max 50 symbols")
-                .Matches(@"^[A-Za-z\s]*$");
+                .Matches(@"^[A-Za-z\s]*$").WithMessage("Wrong Format! Try Again!");
         }
     }
 }

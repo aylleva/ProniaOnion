@@ -16,8 +16,8 @@ namespace ProniaOnion.Application.FluentValidator.ColorDtoValidator
 
             RuleFor(c => c.Name).NotEmpty().WithMessage("Name Required")
                 .MaximumLength(100).WithMessage("Must Contains max 100 symbols")
-                .Matches(@"^[A-Za-z]*$");
-              //.MustAsync(CheckName);
+                .Matches(@"^[A-Za-z]*$").WithMessage("Wrong Format! Try Again!")
+              .MustAsync(CheckName);
 
         }
 
