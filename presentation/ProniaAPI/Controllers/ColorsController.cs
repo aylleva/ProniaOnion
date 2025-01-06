@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProniaOnion.Application.Abstractions.Services;
 using ProniaOnion.Application.DTOs;
@@ -10,10 +11,12 @@ namespace ProniaAPI.Controllers
     public class ColorsController : ControllerBase
     {
         private readonly IColorService _service;
+        private readonly IValidator<CreateColorDto> _validator;
 
-        public ColorsController(IColorService service)
+        public ColorsController(IColorService service,IValidator<CreateColorDto> validator)
         {
             _service = service;
+            _validator = validator;
         }
 
         [HttpGet]
@@ -35,6 +38,16 @@ namespace ProniaAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromForm] CreateColorDto colordto)
         {
+            var result = await _validator.ValidateAsync(colordto);
+
+            if (!result.IsValid)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                }
+                return BadRequest(ModelState);
+            }
             await _service.CreateAsync(colordto);
             return NoContent();
         }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProniaOnion.Application.Abstractions.Services;
 using ProniaOnion.Application.DTOs;
@@ -11,10 +12,12 @@ namespace ProniaAPI.Controllers
     public class GenresController : ControllerBase
     {
         private readonly IGenreService _service;
+        private readonly IValidator<CreateGenreDto> _validator;
 
-        public GenresController(IGenreService service)
+        public GenresController(IGenreService service,IValidator<CreateGenreDto> validator)
         {
             _service = service;
+            _validator = validator;
         }
 
         [HttpGet]
@@ -36,6 +39,16 @@ namespace ProniaAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromForm] CreateGenreDto genredto)
         {
+            var result = await _validator.ValidateAsync(genredto);
+
+            if (!result.IsValid)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                }
+                return BadRequest(ModelState);
+            }
             await _service.CreateAsync(genredto);
             return NoContent();
         }

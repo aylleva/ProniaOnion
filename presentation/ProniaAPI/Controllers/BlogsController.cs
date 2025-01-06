@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProniaOnion.Application.Abstractions.Services;
 using ProniaOnion.Application.DTOs.BlogDto;
@@ -11,10 +12,12 @@ namespace ProniaAPI.Controllers
     public class BlogsController : ControllerBase
     {
         private readonly IBlogService _service;
+       
 
         public BlogsController(IBlogService service)
         {
           _service = service;
+         
         }
 
         [HttpGet]
@@ -36,7 +39,8 @@ namespace ProniaAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromForm] CreateBlogDto blogdto)
         {
-            await _service.CreateAsync(blogdto);
+
+            await _service.CreateAsync(blogdto);  //blogda validator isletmedim cunki title article proplari unikal deyiller
             return NoContent();
         }
 

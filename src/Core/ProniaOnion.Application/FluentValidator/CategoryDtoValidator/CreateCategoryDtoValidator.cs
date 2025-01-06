@@ -13,10 +13,14 @@ namespace ProniaOnion.Application.FluentValidator
            _repository = repository;
 
             RuleFor(x => x.Name)
-                .NotEmpty().WithMessage("Name Required")
-                .MaximumLength(100).WithMessage("Must contains max 100 symbols")
-                .Matches(@"^[A-Za-z\s0-9]*$").WithMessage("Wrong Format! Try Again!")
-                .MustAsync(CheckName).WithMessage("Category is already exists");
+                .NotEmpty()
+                    .WithMessage("Name Required")
+                .MaximumLength(100)
+                    .WithMessage("Must contains max 100 symbols")
+                .Matches(@"^[A-Za-z\s0-9]*$")
+                    .WithMessage("Wrong Format! Try Again!")
+                .MustAsync(CheckName)
+                    .WithMessage("Category is already exists");
         }
 
         public async Task<bool> CheckName(string name,CancellationToken token)

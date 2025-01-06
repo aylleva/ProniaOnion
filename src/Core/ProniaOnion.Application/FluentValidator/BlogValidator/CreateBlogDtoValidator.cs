@@ -12,13 +12,19 @@ namespace ProniaOnion.Application.FluentValidator.BlogValidator
     {
         public CreateBlogDtoValidator()
         {
-            RuleFor(b=>b.Title).NotEmpty().WithMessage("Title Required")
-                .MaximumLength(100).WithMessage("Must Contains max 100 symbols")
-                .Matches(@"^[A-Za-z\s0-9]*$").WithMessage("Wrong Format! Try Again!");
+            RuleFor(b=>b.Title).NotEmpty()
+                    .WithMessage("Title Required")
+                .MaximumLength(100)
+                    .WithMessage("Must Contains max 100 symbols")
+                .Matches(@"^[A-Za-z\s0-9]*$")
+                    .WithMessage("Wrong Format! Try Again!");
 
-            RuleFor(b => b.Article).NotEmpty().WithMessage("Article Required")
-              .MaximumLength(200).WithMessage("Must Contains max 200 symbols")
-              .Matches(@"^[A-Za-z\s0-9]*$").WithMessage("Wrong Format! Try Again!");
+            RuleFor(b => b.Article).NotEmpty()
+                    .WithMessage("Article Required")
+              .MaximumLength(200)
+                    .WithMessage("Must Contains max 200 symbols")
+              .Matches(@"^[A-Za-z\s0-9]*$")
+                    .WithMessage("Wrong Format! Try Again!");
 
         }
     }

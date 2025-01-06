@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using ProniaOnion.Application.Abstractions.Services;
 
 using ProniaOnion.Application.DTOs.AuthorDto;
@@ -11,8 +13,9 @@ namespace ProniaAPI.Controllers
     public class AuthorsController : ControllerBase
     {
         private readonly IAuthorService _service;
+      
 
-        public AuthorsController(IAuthorService service)
+        public AuthorsController(IAuthorService service,IValidator<CreateAuthorDto> validator)
         {
             _service = service;
         }
@@ -36,7 +39,7 @@ namespace ProniaAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromForm] CreateAuthorDto authordto)
         {
-
+           
             await _service.CreateAsync(authordto);
             return Created();
         }

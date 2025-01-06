@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProniaOnion.Application.Abstractions.Services;
 using ProniaOnion.Application.DTOs;
@@ -10,10 +11,12 @@ namespace ProniaAPI.Controllers
     public class SizesController : ControllerBase
     {
         private readonly ISizeService _service;
+        private readonly IValidator<CreateSizeDto> _validator;
 
-        public SizesController(ISizeService service)
+        public SizesController(ISizeService service,IValidator<CreateSizeDto> validator)
         {
             _service = service;
+           _validator = validator;
         }
         [HttpGet]
         public async Task<IActionResult> Get(int page = 1, int take = 2)
@@ -34,6 +37,16 @@ namespace ProniaAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromForm] CreateSizeDto sizedto)
         {
+            var result = await _validator.ValidateAsync(sizedto);
+
+            if (!result.IsValid)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                }
+                return BadRequest(ModelState);
+            }
             await _service.CreateAsync(sizedto);
             return NoContent();
         }

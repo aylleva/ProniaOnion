@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProniaOnion.Application.Abstractions.Services;
 using ProniaOnion.Application.DTOs;
@@ -10,10 +11,12 @@ namespace ProniaAPI.Controllers
     public class TagsController : ControllerBase
     {
         private readonly ITagService _service;
+        private readonly IValidator<CreateTagDto> _validator;
 
-        public TagsController(ITagService service)
+        public TagsController(ITagService service,IValidator<CreateTagDto> validator)
         {
             _service = service;
+            _validator = validator;
         }
         [HttpGet]
         public async Task<IActionResult> Get(int page = 1, int take = 2)
@@ -34,6 +37,16 @@ namespace ProniaAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromForm] CreateTagDto tagdto)
         {
+            var result = await _validator.ValidateAsync(tagdto);
+
+            if (!result.IsValid)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                }
+                return BadRequest(ModelState);
+            }
             await _service.CreateAsync(tagdto);
             return NoContent();
         }
