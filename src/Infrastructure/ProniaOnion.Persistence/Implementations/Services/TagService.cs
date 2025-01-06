@@ -38,13 +38,11 @@ namespace ProniaOnion.Persistence.Implementations.Services
 
         public async Task CreateAsync(CreateTagDto tagdto)
         {
-            if (await _repository.AnyAsync(c => c.Name == tagdto.Name)) throw new Exception("This Tag is already Exist");
+           
 
             var tag = _mapper.Map<Tag>(tagdto);
 
-            tag.CreatedAt = DateTime.Now;
-            tag.UpdatedAt = DateTime.Now;
-            tag.CreatedBy = "admin";
+            
             await _repository.AddAsync(tag);
             await _repository.SaveChangesAsync();
         }
@@ -57,7 +55,7 @@ namespace ProniaOnion.Persistence.Implementations.Services
             if (await _repository.AnyAsync(c => c.Name == tagdto.Name && c.Id != Id)) throw new Exception("This Tag is already Exist");
 
             _mapper.Map(tagdto,tag);
-           tag.UpdatedAt = DateTime.Now;
+        
             _repository.Update(tag);
             await _repository.SaveChangesAsync();
         }

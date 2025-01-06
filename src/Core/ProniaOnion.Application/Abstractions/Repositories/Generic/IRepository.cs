@@ -12,6 +12,7 @@ namespace ProniaOnion.Application.Abstractions.Repositories
             Expression<Func<T, object>>? sort = null,
             bool IsDescending = false,
             bool IsTracking = false,
+            bool ignoreFilter=false,
             int skip = 0,
             int take = 0,
             params string[]? includes);

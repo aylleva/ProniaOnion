@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProniaOnion.Domain.Entities;
+using ProniaOnion.Persistence.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,10 +27,34 @@ namespace ProniaOnion.Persistence.Contexts
         public DbSet<Author> Author { get; set; }
         public DbSet<Genre> Genre { get; set; }
         public DbSet<BlogTags> BlogsTags { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyQueryFilters();
+
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             base.OnModelCreating(modelBuilder);
+        }
+
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            var data = ChangeTracker.Entries<BaseEntity>();
+
+            foreach(var item in data)
+            {
+                switch (item.State)
+                {
+                    case EntityState.Added:
+                        item.Entity.CreatedAt = DateTime.Now;
+                        item.Entity.UpdatedAt = DateTime.Now;
+                        break;
+                    case EntityState.Modified:
+                        item.Entity.UpdatedAt = DateTime.Now;
+                        break;
+                   
+                }
+            }
+            return base.SaveChangesAsync(cancellationToken);
         }
     }
 }

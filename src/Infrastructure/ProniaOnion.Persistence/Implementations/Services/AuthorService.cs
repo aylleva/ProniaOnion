@@ -1,17 +1,10 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 using ProniaOnion.Application.Abstractions.Repositories;
 using ProniaOnion.Application.Abstractions.Services;
-using ProniaOnion.Application.DTOs;
 using ProniaOnion.Application.DTOs.AuthorDto;
 using ProniaOnion.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace ProniaOnion.Persistence.Implementations.Services
 {
@@ -48,9 +41,7 @@ namespace ProniaOnion.Persistence.Implementations.Services
 
             var author = _mapper.Map<Author>(authordto);
 
-            author.CreatedAt = DateTime.Now;
-            author.UpdatedAt = DateTime.Now;
-            author.CreatedBy = "admin";
+           
             await _repository.AddAsync(author);
             await _repository.SaveChangesAsync();
         }
@@ -62,7 +53,7 @@ namespace ProniaOnion.Persistence.Implementations.Services
 
 
             _mapper.Map(authordto, author);
-            author.UpdatedAt = DateTime.Now;
+          
             _repository.Update(author);
             await _repository.SaveChangesAsync();
         }
