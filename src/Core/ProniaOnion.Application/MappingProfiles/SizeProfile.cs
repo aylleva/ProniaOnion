@@ -11,7 +11,7 @@ namespace ProniaOnion.Application.MappingProfiles
             CreateMap<Size,SizeItemDto>().ReverseMap();
             CreateMap<Size, GetSizeDto>();
             CreateMap<CreateSizeDto,Size>();
-            CreateMap<UpdateSizeDto, Size>().ForMember(s=>s.Id,opt=>opt.Ignore());
+            CreateMap<UpdateSizeDto, Size>();
 
         }
     }

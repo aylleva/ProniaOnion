@@ -19,6 +19,8 @@ namespace ProniaOnion.Persistence.ServiceRegistration
 
              );
             services.AddScoped<IProductRepository,ProductRepository>();
+            services.AddScoped<IProductService,ProductService>();
+
             services.AddScoped<ICategoryRepository, CategoryRepository>(); 
             services.AddScoped<IColorRepository,ColorRepository>();
 

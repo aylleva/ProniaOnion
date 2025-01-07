@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace ProniaOnion.Application.DTOs
 {
-   public record ProductItemDto(int Id,string Name,string SKU,string Description,decimal Price);
+   public record ProductItemDto(int Id,string Name,decimal Price);
    
 }
