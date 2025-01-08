@@ -38,13 +38,11 @@ namespace ProniaOnion.Persistence.Implementations.Services
 
         public async Task CreateAsync(CreateSizeDto sizedto)
         {
-            if (await _repository.AnyAsync(c => c.Name == sizedto.Name)) throw new Exception("This Size is already Exist");
+         
 
             var size = _mapper.Map<Size>(sizedto);
 
-            size.CreatedAt = DateTime.Now;
-            size.UpdatedAt = DateTime.Now;
-            size.CreatedBy = "admin";
+            
             await _repository.AddAsync(size);
             await _repository.SaveChangesAsync();
         }
@@ -57,7 +55,7 @@ namespace ProniaOnion.Persistence.Implementations.Services
             if (await _repository.AnyAsync(c => c.Name == sizedto.Name && c.Id != Id)) throw new Exception("This Size is already Exist");
 
             _mapper.Map(sizedto, size);
-            size.UpdatedAt = DateTime.Now;
+          
             _repository.Update(size);
             await _repository.SaveChangesAsync();
         }

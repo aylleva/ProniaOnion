@@ -38,13 +38,11 @@ namespace ProniaOnion.Persistence.Implementations.Services
 
         public async Task CreateAsync(CreateColorDto colordto)
         {
-            if (await _repository.AnyAsync(c => c.Name == colordto.Name)) throw new Exception("This Color is already Exist");
+           
            
             var color=_mapper.Map<Color>(colordto);
 
-            color.CreatedAt=DateTime.Now;
-            color.UpdatedAt=DateTime.Now;
-            color.CreatedBy = "admin";
+         
             await _repository.AddAsync(color);
             await _repository.SaveChangesAsync();
         }
@@ -57,7 +55,7 @@ namespace ProniaOnion.Persistence.Implementations.Services
             if (await _repository.AnyAsync(c => c.Name == colordto.Name && c.Id != Id)) throw new Exception("This Color is already Exist");
 
             _mapper.Map(colordto,color);
-            color.UpdatedAt = DateTime.Now;
+         
             _repository.Update(color);
             await _repository.SaveChangesAsync();
         }

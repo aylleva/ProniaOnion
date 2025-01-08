@@ -47,9 +47,7 @@ namespace ProniaOnion.Persistence.Implementations.Services
 
             var blog = _mapper.Map<Blog>(blogdto);
 
-            blog.CreatedAt = DateTime.Now;
-            blog.UpdatedAt = DateTime.Now;
-            blog.CreatedBy = "admin";
+
             await _repository.AddAsync(blog);
             await _repository.SaveChangesAsync();
         }
@@ -61,7 +59,7 @@ namespace ProniaOnion.Persistence.Implementations.Services
 
 
             _mapper.Map(blogdto, blog);
-            blog.UpdatedAt = DateTime.Now;
+         
             _repository.Update(blog);
             await _repository.SaveChangesAsync();
         }

@@ -41,9 +41,7 @@ namespace ProniaOnion.Persistence.Implementations.Services
         {
             var category= _mapper.Map<Category>(categoryDto);
 
-            category.CreatedAt=DateTime.Now;
-           category.UpdatedAt=DateTime.Now;
-            category.CreatedBy = "admin";
+          
             await _repository.AddAsync(category);
             await _repository.SaveChangesAsync();
         }
@@ -56,7 +54,7 @@ namespace ProniaOnion.Persistence.Implementations.Services
             if (await _repository.AnyAsync(c => c.Name == categoryDto.Name && c.Id != id)) throw new Exception("Category is already exists");
 
             _mapper.Map(categoryDto,category);
-            category.UpdatedAt=DateTime.Now;
+          
             _repository.Update(category);
             await _repository.SaveChangesAsync();
         }

@@ -46,12 +46,10 @@ namespace ProniaOnion.Persistence.Implementations.Services
 
         public async Task CreateAsync(CreateGenreDto genredto)
         {
-            if (await _repository.AnyAsync(c => c.Name == genredto.Name)) throw new Exception(" Genre is already exists");
+           
             var genre = _mapper.Map<Genre>(genredto);
 
-            genre.CreatedAt = DateTime.Now;
-            genre.UpdatedAt = DateTime.Now;
-            genre.CreatedBy = "admin";
+           
             await _repository.AddAsync(genre);
             await _repository.SaveChangesAsync();
         }
@@ -64,7 +62,7 @@ namespace ProniaOnion.Persistence.Implementations.Services
             if (await _repository.AnyAsync(c => c.Name == genredto.Name && c.Id != id)) throw new Exception("Genre is already exists");
 
             _mapper.Map(genredto,genre);
-          genre.UpdatedAt = DateTime.Now;
+         
             _repository.Update(genre);
             await _repository.SaveChangesAsync();
         }

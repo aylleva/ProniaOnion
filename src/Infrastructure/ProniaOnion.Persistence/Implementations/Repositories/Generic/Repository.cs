@@ -22,6 +22,7 @@ namespace ProniaOnion.Persistence.Implementations.Repositories.Generic
              Expression<Func<T, object>>? sort = null,
             bool IsDescending = false,
             bool IsTracking = false,
+            bool ignoreFilter=false,
             int skip = 0,
             int take = 0,
             params string[]? includes)
@@ -41,6 +42,8 @@ namespace ProniaOnion.Persistence.Implementations.Repositories.Generic
             query = query.Skip(skip);
 
             if (take != 0) query = query.Take(take);
+
+            if(ignoreFilter) query=query.IgnoreQueryFilters();
 
             return IsTracking ? query : query.AsNoTracking();
 
