@@ -10,7 +10,7 @@ namespace ProniaOnion.Persistence.Implementations.Repositories.Generic
 {
     public class Repository<T> : IRepository<T> where T : BaseEntity, new()
     {
-        private readonly AppDBContext _context;
+        protected readonly AppDBContext _context;
         private readonly DbSet<T> _table;
         public Repository(AppDBContext context)
         {

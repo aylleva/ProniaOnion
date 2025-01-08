@@ -1,12 +1,9 @@
-﻿using ProniaOnion.Application.Abstractions.Repositories;
+﻿using Microsoft.EntityFrameworkCore;
+using ProniaOnion.Application.Abstractions.Repositories;
 using ProniaOnion.Domain.Entities;
 using ProniaOnion.Persistence.Contexts;
 using ProniaOnion.Persistence.Implementations.Repositories.Generic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace ProniaOnion.Persistence.Implementations.Repositories
 {
@@ -14,5 +11,9 @@ namespace ProniaOnion.Persistence.Implementations.Repositories
     {
         public ProductRepository(AppDBContext context) : base(context) { }
        
+        public async Task<IEnumerable<T>> CheckIds<T>(ICollection<int> ids) where T : BaseEntity
+        {
+             return await  _context.Set<T>().Where(s=>ids.Contains(s.Id)).ToListAsync();
+        } 
     }
 }

@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿
 using Microsoft.AspNetCore.Mvc;
 using ProniaOnion.Application.Abstractions.Services;
-using System.Runtime.InteropServices;
+using ProniaOnion.Application.DTOs.ProductDto;
+
 
 namespace ProniaAPI.Controllers
 {
@@ -31,6 +32,28 @@ namespace ProniaAPI.Controllers
             if(productdto == null) return NotFound();
 
             return Ok(productdto);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post([FromForm]CreateProductDto productdto)
+        {
+            await _service.CreateAsync(productdto);
+            return Created();
+        }
+        [HttpPut]
+
+        public async Task<IActionResult> Put(int Id,UpdateProductDto productDto)
+        {
+            if(Id < 1) return BadRequest();
+            await _service.UpdateAsync(Id, productDto);
+            return NoContent();
+        }
+        [HttpDelete]
+        public async Task<IActionResult> Delete(int Id)
+        {
+            if(Id<1) return BadRequest();
+            await _service.DeleteAsync(Id);
+            return NoContent();
         }
     }
 }

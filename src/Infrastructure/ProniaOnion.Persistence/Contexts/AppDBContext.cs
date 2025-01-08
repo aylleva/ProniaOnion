@@ -26,6 +26,7 @@ namespace ProniaOnion.Persistence.Contexts
         public DbSet<Author> Author { get; set; }
         public DbSet<Genre> Genre { get; set; }
         public DbSet<BlogTags> BlogsTags { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

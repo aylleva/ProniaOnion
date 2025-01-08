@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ProniaOnion.Application.DTOs.ProductDto
 {
    public record GetProductDto(int Id, string Name, decimal Price,CategoryItemDto Category,
-       string SKU,string Decription,
+       string SKU,string Description,
        IEnumerable<ColorItemDto> Colors,
     IEnumerable<TagItemDto> Tags,
     IEnumerable<SizeItemDto> Sizes);

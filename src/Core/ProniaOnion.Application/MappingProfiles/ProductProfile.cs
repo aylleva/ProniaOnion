@@ -28,8 +28,31 @@ namespace ProniaOnion.Application.MappingProfiles
                 .ForCtorParam(nameof(GetProductDto.Sizes),
                opt => opt.MapFrom(
                    p => p.ProductSizes.Select(pc => new SizeItemDto(pc.SizeId, pc.Size.Name)).ToList())
-               ); 
-            
+               );
+
+            CreateMap<CreateProductDto, Product>()
+                .ForMember(c => c.ProductColors, opt =>
+                opt.MapFrom(p=>p.ColorIds.Select(cId=> new ProductColors { ColorId=cId}))
+                )
+                .ForMember(c => c.ProductTags, opt =>
+                opt.MapFrom(p => p.TagIds.Select(tId => new ProductTags {TagId = tId }))
+                )
+                .ForMember(c => c.ProductSizes, opt =>
+                opt.MapFrom(p => p.SizeIds.Select(sId => new ProductSizes {SizeId = sId }))
+                )
+                ;
+            CreateMap<UpdateProductDto,Product>()
+                .ForMember(p=>p.Id,opt=>opt.Ignore())
+                .ForMember(c => c.ProductColors, opt =>
+                opt.MapFrom(p => p.ColorIds.Select(cId => new ProductColors { ColorId = cId }))
+                )
+                .ForMember(c => c.ProductTags, opt =>
+                opt.MapFrom(p => p.TagIds.Select(tId => new ProductTags { TagId = tId }))
+                )
+                .ForMember(c => c.ProductSizes, opt =>
+                opt.MapFrom(p => p.SizeIds.Select(sId => new ProductSizes { SizeId = sId }))
+                )
+                ;
         }
     }
 }

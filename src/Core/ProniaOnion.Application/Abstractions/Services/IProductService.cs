@@ -11,5 +11,9 @@ namespace ProniaOnion.Application.Abstractions.Services
         Task<GetProductDto> GetByIdAsync(int id);
 
         Task CreateAsync(CreateProductDto productdto);
+
+        Task UpdateAsync(int Id,UpdateProductDto productdto);
+
+        Task DeleteAsync(int Id);
     }
 }

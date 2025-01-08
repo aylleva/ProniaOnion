@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProniaOnion.Application.DTOs.ProductDto
 {
-     public record CreateProductDto(int Id, string Name, decimal Price,string SKU,string Description
+     public record CreateProductDto( string Name, decimal Price,string SKU,string Description
          ,int CategoryId,ICollection<int> ColorIds,ICollection<int> TagIds,ICollection<int> SizeIds);
    
 }
