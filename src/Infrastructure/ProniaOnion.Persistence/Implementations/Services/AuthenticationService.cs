@@ -3,8 +3,10 @@ using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.IdentityModel.Tokens;
 using ProniaOnion.Application.Abstractions.Services;
 using ProniaOnion.Application.DTOs.AppUsersDto;
+using ProniaOnion.Application.DTOs.TokenHandler;
 using ProniaOnion.Domain.Entities;
 using System.Text;
 
@@ -14,13 +16,15 @@ namespace ProniaOnion.Persistence.Implementations.Services
     {
         private readonly UserManager<AppUser> _usermeneger;
         private readonly IMapper _mapper;
+        private readonly ITokenHandler _token;
 
-        public AuthenticationService(UserManager<AppUser> usermeneger,IMapper mapper)
+        public AuthenticationService(UserManager<AppUser> usermeneger,IMapper mapper,ITokenHandler token)
         {
            _usermeneger = usermeneger;
             _mapper = mapper;
+            _token = token;
         }
-        public async Task Register(RegisterDto registerDto)
+        public async Task RegisterAsync(RegisterDto registerDto)
         {
             if (await _usermeneger.Users.AnyAsync(u => u.UserName == registerDto.UserName || u.Email == registerDto.Email)) 
             throw new Exception("UserName or Email is already exist");
@@ -34,13 +38,13 @@ namespace ProniaOnion.Persistence.Implementations.Services
                 {
                     str.AppendLine(error.Description);
                 }
+                throw new Exception(str.ToString());
             }
 
-            throw new Exception(str.ToString());
-           
+
         }
 
-        public async Task Login(LoginDto loginDto)
+        public async Task<TokenHandleDto> LoginAsync(LoginDto loginDto)
         {
            AppUser? user=await _usermeneger.Users.FirstOrDefaultAsync(u=>u.UserName==loginDto.UserNameorEmail||u.Email==loginDto.UserNameorEmail);
             if (user == null) throw new Exception("UserName/Email or Password is incorrect!");
@@ -51,13 +55,10 @@ namespace ProniaOnion.Persistence.Implementations.Services
                 await _usermeneger.AccessFailedAsync(user);
                 throw new Exception("UserName/Email or Password is incorrect!");
             }
-              
+
+            return _token.CreateToken(user, 30);
         }
 
 
-        //private string Capitalize(string str)
-        //{
-        //   return str = char.ToUpper(str[0])+str.Substring(1);
-        //}
     }
 }

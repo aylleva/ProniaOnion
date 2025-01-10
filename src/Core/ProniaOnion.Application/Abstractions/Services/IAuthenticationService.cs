@@ -1,13 +1,14 @@
 ﻿
 
 using ProniaOnion.Application.DTOs.AppUsersDto;
+using ProniaOnion.Application.DTOs.TokenHandler;
 
 namespace ProniaOnion.Application.Abstractions.Services
 {
      public interface IAuthenticationService
     {
-        Task Register(RegisterDto registerDto);
+        Task RegisterAsync(RegisterDto registerDto);
 
-        Task Login(LoginDto loginDto);
+        Task<TokenHandleDto> LoginAsync(LoginDto loginDto);
     }
 }

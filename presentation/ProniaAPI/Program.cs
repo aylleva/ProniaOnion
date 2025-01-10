@@ -1,4 +1,5 @@
 using ProniaOnion.Application.ServiceRegistration;
+using ProniaOnion.Infrastructure.ServiceRegistration;
 using ProniaOnion.Persistence.ServiceRegistration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,7 +11,9 @@ builder.Services.AddControllers(opt=> opt.ModelValidatorProviders.Clear());
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddPersistenceServices(builder.Configuration).AddApplicationServices();
+builder.Services.AddPersistenceServices(builder.Configuration)
+    .AddApplicationServices()
+    .AddInfrastructureServices();
     
 
 

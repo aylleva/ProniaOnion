@@ -10,3 +10,9 @@ C:\Users\user\Desktop\API\ProniaOnion\src\Infrastructure\ProniaOnion.Infrastruct
 C:\Users\user\Desktop\API\ProniaOnion\src\Infrastructure\ProniaOnion.Infrastructure\obj\Debug\net8.0\refint\ProniaOnion.Infrastructure.dll
 C:\Users\user\Desktop\API\ProniaOnion\src\Infrastructure\ProniaOnion.Infrastructure\obj\Debug\net8.0\ProniaOnion.Infrastructure.pdb
 C:\Users\user\Desktop\API\ProniaOnion\src\Infrastructure\ProniaOnion.Infrastructure\obj\Debug\net8.0\ref\ProniaOnion.Infrastructure.dll
+C:\Users\user\Desktop\API\ProniaOnion\src\Infrastructure\ProniaOnion.Infrastructure\bin\Debug\net8.0\ProniaOnion.Application.dll
+C:\Users\user\Desktop\API\ProniaOnion\src\Infrastructure\ProniaOnion.Infrastructure\bin\Debug\net8.0\ProniaOnion.Domain.dll
+C:\Users\user\Desktop\API\ProniaOnion\src\Infrastructure\ProniaOnion.Infrastructure\bin\Debug\net8.0\ProniaOnion.Application.pdb
+C:\Users\user\Desktop\API\ProniaOnion\src\Infrastructure\ProniaOnion.Infrastructure\bin\Debug\net8.0\ProniaOnion.Domain.pdb
+C:\Users\user\Desktop\API\ProniaOnion\src\Infrastructure\ProniaOnion.Infrastructure\obj\Debug\net8.0\ProniaOnion.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\API\ProniaOnion\src\Infrastructure\ProniaOnion.Infrastructure\obj\Debug\net8.0\ProniaOn.5AAB561C.Up2Date

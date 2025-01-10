@@ -216,6 +216,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ProniaAPI.Controllers.AuthenticationController",
+    "Method": "Login",
+    "RelativePath": "Authentication/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UserNameorEmail",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Password",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ProniaAPI.Controllers.AuthorsController",
     "Method": "Get",
     "RelativePath": "Authors",

@@ -19,8 +19,13 @@ namespace ProniaAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Register([FromForm] RegisterDto userdto)
         {
-            await _service.Register(userdto);
+            await _service.RegisterAsync(userdto);
             return NoContent();
+        }
+        [HttpPost("[Action]")]  
+        public async Task<IActionResult> Login([FromForm] LoginDto userdto)
+        {
+            return Ok(await _service.LoginAsync(userdto));
         }
     }
 }
